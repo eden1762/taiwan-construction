@@ -67,11 +67,11 @@
         <details class="quickPanel firstUse" open>
           <summary><span class="zh-only">地圖怎麼看</span><span class="en-only inline-en">How to use the map</span></summary>
           <ul>
-            <li class="zh-only">手機可直接拖曳地圖、點工程標記，或搜尋工程名、地點、甲方與乙方。</li>
-            <li class="zh-only">地圖背景較慢時，工程清單、縣市卡片與台灣簡圖仍可先查，不會卡住。</li>
+            <li class="zh-only">手機可直接用單指拖曳 OpenStreetMap、雙指縮放地圖，也能點工程標記或搜尋工程名、地點、甲方與乙方。</li>
+            <li class="zh-only">OpenStreetMap 底圖較慢時仍會持續優先載入與重試，不會切換成只顯示台灣簡圖。</li>
             <li class="zh-only">工程金額、期程與承攬資訊可能更新，正式引用前請回公開來源確認。</li>
-            <li class="en-only">On mobile, drag the map, tap a project pin, or search by project, place, owner, or contractor.</li>
-            <li class="en-only">If map tiles are slow, the project list, city cards, and Taiwan fallback map remain usable.</li>
+            <li class="en-only">On mobile, drag OpenStreetMap with one finger, pinch with two fingers to zoom, tap project pins, or search by project, place, owner, or contractor.</li>
+            <li class="en-only">If OpenStreetMap tiles are slow, the site keeps loading and retrying them instead of switching to a simplified Taiwan-only map.</li>
             <li class="en-only">Budgets, schedules, and contractor details may change; verify the public source before formal use.</li>
           </ul>
         </details>
@@ -87,7 +87,7 @@
             <h2 data-t="countyTitle">各縣市工程總數與分類盤點</h2>
             <p class="mapNote"><span class="zh-only">先看全台分布，再用搜尋、縣市、狀態與圖層縮小範圍。</span><span class="en-only inline-en">Start with the national spread, then narrow it by search, city, status, and layer.</span></p>
           </div>
-          <p id="health" data-t="boot">工程清單已可用，地圖背景載入中。</p>
+          <p id="health" data-t="boot">OpenStreetMap 底圖載入中。</p>
         </div>
         <div id="map" class="map" aria-label="全國工程概況地圖"></div>
         <div id="detail" class="detail" aria-live="polite"></div>
@@ -113,5 +113,6 @@
   <div data-site-footer></div>
   <script src="./site-shell.js?v=20260830-candidates"></script>
   <script type="module" src="./fast-map.js?v=20260711-single-source"></script>
+  <script defer src="./osm-priority-touch.js?v=20260830-osm-touch"></script>
 </body>
 </html>
