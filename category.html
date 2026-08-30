@@ -21,7 +21,7 @@
       <div>
         <p class="pill" id="sectorPill">工程圖層地圖</p>
         <h1 id="sectorTitle">工程圖層地圖</h1>
-        <p id="sectorLead">用縣市查詢工程點位、甲方、乙方、金額、期程與來源。手機上也能快速看案場分布。</p>
+        <p id="sectorLead">用縣市查詢工程點位、甲方、乙方、金額、期程與來源。手機可直接單指拖曳、雙指縮放 OpenStreetMap。</p>
         <div class="actions">
           <a class="btn" href="#mapSec" data-t="openSector">打開分類地圖</a>
           <a class="btn alt" href="./index.html" data-t="overview">全國工程概況</a>
@@ -53,7 +53,7 @@
       <section class="mapcard">
         <div class="mapbar">
           <div><p class="eyebrow" data-t="osm">OpenStreetMap 電子地圖</p><h2 id="sectorMapTitle">工程圖層地圖</h2></div>
-          <p id="health" data-t="boot">工程清單已可用，地圖背景載入中。</p>
+          <p id="health" data-t="boot">OpenStreetMap 底圖載入中。</p>
         </div>
         <div id="map" class="map" aria-label="工程圖層地圖"></div>
         <div id="detail" class="detail" aria-live="polite"></div>
@@ -67,7 +67,8 @@
   </main>
 
   <div data-site-footer></div>
-  <script src="./site-shell.js?v=20260711-single-source"></script>
+  <script src="./site-shell.js?v=20260830-candidates"></script>
   <script type="module" src="./fast-map.js?v=20260711-single-source"></script>
+  <script defer src="./osm-priority-touch.js?v=20260830-osm-touch"></script>
 </body>
 </html>
