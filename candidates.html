@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071827">
+  <meta name="description" content="台灣工程地圖候選工程：統整已儲存在 GitHub、但尚未進入正式工程地圖的候選案件，並標示缺少資料與未上圖原因。">
+  <title>候選工程｜台灣工程地圖 Taiwan Construction Map</title>
+  <link rel="preload" href="./Content/Taiwan_Construction.PNG" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="./fast-map.css?v=20260830-candidates">
+  <link rel="stylesheet" href="./candidates.css?v=20260830-candidates">
+</head>
+<body data-page="candidates">
+  <a class="skip" href="#candidateTable"><span class="zh-only">跳到候選工程統整表</span><span class="en-only inline-en">Skip to candidate project table</span></a>
+  <div data-site-header></div>
+
+  <main>
+    <section class="hero candidateHero">
+      <div>
+        <p class="pill"><span class="zh-only">GitHub 候選資料 × 正式地圖比對 × 缺項說明</span><span class="en-only inline-en">GitHub candidates × active-map comparison × missing-data reasons</span></p>
+        <h1><span class="zh-only">候選工程：已找到，但還不能直接放上地圖的案件。</span><span class="en-only inline-en">Candidate projects found in the repository but not ready for the active map.</span></h1>
+        <p><span class="zh-only">本頁統整 repository 內歷次候選工程檔，並和目前正式地圖資料集比對。已經在正式地圖中的同名／同去重鍵案件會排除；其餘候選案列出目前已知資料，以及「缺少資料」欄說明尚未上圖的主要原因。</span><span class="en-only inline-en">This page consolidates historical candidate files in the repository and compares them with the current active map dataset. Candidates already present by matching name or dedupe key are excluded; remaining records show known fields and the main reasons they are not yet mapped.</span></p>
+        <div class="actions">
+          <a class="btn" href="#candidateTable"><span class="zh-only">查看候選工程表</span><span class="en-only inline-en">Open candidate table</span></a>
+          <a class="btn alt" href="./sources.html"><span class="zh-only">查看資料入口</span><span class="en-only inline-en">Open data sources</span></a>
+        </div>
+      </div>
+      <div class="metrics" aria-label="候選工程統計">
+        <article><b id="candidateCount">0</b><span><span class="zh-only">候選工程</span><span class="en-only inline-en">Candidate projects</span></span></article>
+        <article><b id="sourceFileCount">0</b><span><span class="zh-only">候選來源檔</span><span class="en-only inline-en">Candidate files</span></span></article>
+        <article><b id="missingTop">—</b><span><span class="zh-only">最常見缺項</span><span class="en-only inline-en">Top missing item</span></span></article>
+      </div>
+    </section>
+
+    <section class="block candidateIntro">
+      <div class="title">
+        <p class="eyebrow"><span class="zh-only">為什麼不直接上圖</span><span class="en-only inline-en">Why candidates stay off the map</span></p>
+        <h2><span class="zh-only">候選資料保留線索，但正式地圖只收錄可回查、可定位、可判斷狀態的案件。</span><span class="en-only inline-en">Candidate files preserve leads; the active map requires traceable, locatable, status-verifiable records.</span></h2>
+        <p><span class="zh-only">候選檔曾明定：若主管機關來源、工程範圍、狀態、期程、位置、去重鍵或 geometry 尚未完整，就維持 candidate。這一頁把這些缺項公開列出，方便之後逐案補資料。</span><span class="en-only inline-en">Repository review rules keep a record as a candidate when agency sources, scope, status, dates, location, dedupe keys, or geometry are incomplete. This page exposes those gaps for follow-up verification.</span></p>
+      </div>
+    </section>
+
+    <section id="candidateTable" class="block candidateBlock">
+      <div class="title candidateTitleRow">
+        <div>
+          <p class="eyebrow"><span class="zh-only">候選工程統整表</span><span class="en-only inline-en">Candidate project register</span></p>
+          <h2><span class="zh-only">GitHub 有資料、正式地圖尚未收錄。</span><span class="en-only inline-en">Stored in GitHub, not yet included in the active map.</span></h2>
+          <p id="loadState"><span class="zh-only">正在讀取候選資料並和正式地圖比對。</span><span class="en-only inline-en">Loading candidate records and comparing them with the active map.</span></p>
+        </div>
+      </div>
+
+      <div class="candidateTools">
+        <label class="search candidateSearch"><span><span class="zh-only">搜尋</span><span class="en-only inline-en">Search</span></span><input id="candidateQ" type="search" autocomplete="off" placeholder="例：桃園捷運、鐵路、機場"></label>
+        <label><span><span class="zh-only">類別</span><span class="en-only inline-en">Category</span></span><select id="candidateCategory"></select></label>
+        <label><span><span class="zh-only">缺少資料</span><span class="en-only inline-en">Missing data</span></span><select id="candidateMissing"></select></label>
+      </div>
+
+      <div class="candidateLegend" aria-label="候選工程說明">
+        <span><b class="dot"></b><span class="zh-only">「缺少資料」優先使用候選檔既有查核註記，再補上欄位完整性檢查。</span><span class="en-only inline-en">Missing-data reasons prioritize repository review notes, then field-completeness checks.</span></span>
+        <span><b class="dot"></b><span class="zh-only">名稱變體可能需要人工複核；本頁不會自動把候選工程升級為正式地圖案件。</span><span class="en-only inline-en">Name variants may require manual review; this page never promotes candidates to the active map automatically.</span></span>
+      </div>
+
+      <div class="candidateTableWrap">
+        <table class="candidateTable">
+          <thead>
+            <tr>
+              <th><span class="zh-only">工程名稱</span><span class="en-only inline-en">Project</span></th>
+              <th><span class="zh-only">類別</span><span class="en-only inline-en">Category</span></th>
+              <th><span class="zh-only">地點</span><span class="en-only inline-en">Location</span></th>
+              <th><span class="zh-only">狀態</span><span class="en-only inline-en">Status</span></th>
+              <th><span class="zh-only">甲方／乙方</span><span class="en-only inline-en">Owner / contractor</span></th>
+              <th><span class="zh-only">預算／期程</span><span class="en-only inline-en">Budget / schedule</span></th>
+              <th><span class="zh-only">公開來源</span><span class="en-only inline-en">Public source</span></th>
+              <th class="missingCol"><span class="zh-only">缺少資料</span><span class="en-only inline-en">Missing data</span></th>
+              <th><span class="zh-only">候選檔</span><span class="en-only inline-en">Candidate file</span></th>
+            </tr>
+          </thead>
+          <tbody id="candidateRows"></tbody>
+        </table>
+      </div>
+      <p id="candidateEmpty" class="candidateEmpty" hidden><span class="zh-only">目前沒有符合篩選條件的候選工程。</span><span class="en-only inline-en">No candidate projects match these filters.</span></p>
+    </section>
+  </main>
+
+  <div data-site-footer></div>
+  <script src="./site-shell.js?v=20260830-candidates"></script>
+  <script type="module" src="./candidates.js?v=20260830-candidates"></script>
+</body>
+</html>
