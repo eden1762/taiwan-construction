@@ -27,4 +27,40 @@
         <button id="lang" type="button" aria-label="切換中文與英文">EN</button>
       </div>`;
   }
+
+  const candidateLabel = () => document.documentElement.lang === 'en' ? 'Candidate Projects' : '候選工程';
+
+  const ensureCandidateNav = () => {
+    const nav = document.querySelector('#mainNav');
+    if (!nav) return;
+
+    let link = nav.querySelector('a[href="./candidates.html"], a[href="./candidates"]');
+    if (!link) {
+      link = document.createElement('a');
+      link.href = './candidates.html';
+      const sourcesLink = nav.querySelector('a[href="./sources.html"], a[href="./sources"]');
+      if (sourcesLink) nav.insertBefore(link, sourcesLink);
+      else nav.appendChild(link);
+    }
+
+    const label = candidateLabel();
+    if (link.textContent !== label) link.textContent = label;
+
+    if (document.body?.dataset.page === 'candidates') {
+      link.setAttribute('aria-current', 'page');
+    } else if (link.getAttribute('aria-current') === 'page') {
+      link.removeAttribute('aria-current');
+    }
+  };
+
+  ensureCandidateNav();
+
+  const nav = document.querySelector('#mainNav');
+  if (nav) {
+    new MutationObserver(ensureCandidateNav).observe(nav, { childList: true, subtree: true });
+  }
+  new MutationObserver(ensureCandidateNav).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['lang']
+  });
 })();
